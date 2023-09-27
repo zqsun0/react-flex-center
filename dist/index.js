@@ -25,19 +25,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = require("react");
 var clsx_1 = require("clsx");
-// 尝试从 'react' 中导入 useId，如果不存在则为 undefined
+// because the useId hook doesn't exist in react@17
+// try to get the useId from 'react', if it doesn't exist, it will be undefined
 var useId = require('react').useId;
 /**
- * @description 用于居中的 flex 布局组件
+ * @description A flex layout component for centering content
  * @author zqsun
- * @version 3.0
- * @param {object} props - 组件属性
- * @param {('row' | 'column' | 'all')} [props.direction='all'] - 居中方向，可选值为 'row'、'column' 或 'all'，默认为 'all'
- *   - 'row': 在水平方向上进行水平居中
- *   - 'column': 在垂直方向上进行垂直居中
- *   - 'all': 在水平和垂直方向上同时进行居中
- * @param {React.ReactNode} props.children - 子元素
- * @returns {JSX.Element} - FlexToCenter 组件
+ * @version 4.0
+ * @param {object} props - Component properties
+ * @param {('horizontal' | 'vertical' | 'both')} [props.centering='both'] - Centering direction. The options are 'horizontal', 'vertical', or 'both'. The default is 'both'.
+ *   - 'horizontal': Centers content horizontally
+ *   - 'vertical': Centers content vertically
+ *   - 'both': Centers content both horizontally and vertically
+ * @param {React.ReactNode} props.children - Child elements
+ * @returns {JSX.Element} - FlexCenter component
  */
 function useFallbackId() {
     var idRef = (0, react_1.useRef)('');
@@ -49,17 +50,20 @@ function useFallbackId() {
     return idRef.current;
 }
 var FlexCenter = function (_a) {
-    var _b = _a.direction, direction = _b === void 0 ? 'all' : _b, children = _a.children, props = __rest(_a, ["direction", "children"]);
+    var _b = _a.centering, centering = _b === void 0 ? 'both' : _b, children = _a.children, props = __rest(_a, ["centering", "children"]);
     var id = useId ? useId() : useFallbackId();
     var getFlexStyle = function () {
-        if (direction === 'all') {
+        if (centering === 'both') {
             return 'FLEX_ALL_CENTER';
         }
-        else if (direction === 'row') {
+        else if (centering === 'horizontal') {
             return 'FLEX_WIDTH_CENTER';
         }
-        else {
+        else if (centering === 'vertical') {
             return 'FLEX_HEIGHT_CENTER';
+        }
+        else {
+            return '';
         }
     };
     return ((0, jsx_runtime_1.jsx)("div", __assign({ id: 'FlexCenter-' + id }, props, { className: (0, clsx_1.clsx)(getFlexStyle(), props.className) }, { children: children })));

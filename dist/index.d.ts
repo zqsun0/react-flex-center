@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
 interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
-    direction?: 'row' | 'column' | 'all';
+    centering?: 'horizontal' | 'vertical' | 'both';
     children: ReactNode;
 }
-declare const FlexCenter: ({ direction, children, ...props }: FlexCenterProp) => import("react/jsx-runtime").JSX.Element;
+declare const FlexCenter: ({ centering, children, ...props }: FlexCenterProp) => import("react/jsx-runtime").JSX.Element;
 export default FlexCenter;

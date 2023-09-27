@@ -1,6 +1,6 @@
 {
   "name": "react-flex-center",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React component library for easily centering elements using flexbox.",
   "main": "dist/index.js",
   "files": [

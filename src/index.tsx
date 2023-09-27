@@ -1,26 +1,28 @@
 import { HTMLAttributes, ReactNode, useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 
-// 尝试从 'react' 中导入 useId，如果不存在则为 undefined
-const { useId } = require('react');
+// because the useId hook doesn't exist in react@17
+// try to get the useId from 'react', if it doesn't exist, it will be undefined
+const {useId} = require('react');
 
 interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
-  direction?: 'row' | 'column' | 'all';
+  centering?: 'horizontal' | 'vertical' | 'both';
   children: ReactNode;
 }
 
 /**
- * @description 用于居中的 flex 布局组件
+ * @description A flex layout component for centering content
  * @author zqsun
- * @version 3.0
- * @param {object} props - 组件属性
- * @param {('row' | 'column' | 'all')} [props.direction='all'] - 居中方向，可选值为 'row'、'column' 或 'all'，默认为 'all'
- *   - 'row': 在水平方向上进行水平居中
- *   - 'column': 在垂直方向上进行垂直居中
- *   - 'all': 在水平和垂直方向上同时进行居中
- * @param {React.ReactNode} props.children - 子元素
- * @returns {JSX.Element} - FlexToCenter 组件
+ * @version 4.0
+ * @param {object} props - Component properties
+ * @param {('horizontal' | 'vertical' | 'both')} [props.centering='both'] - Centering direction. The options are 'horizontal', 'vertical', or 'both'. The default is 'both'.
+ *   - 'horizontal': Centers content horizontally
+ *   - 'vertical': Centers content vertically
+ *   - 'both': Centers content both horizontally and vertically
+ * @param {React.ReactNode} props.children - Child elements
+ * @returns {JSX.Element} - FlexCenter component
  */
+
 
 function useFallbackId() {
   const idRef = useRef<string>('');
@@ -34,16 +36,18 @@ function useFallbackId() {
   return idRef.current;
 }
 
-const FlexCenter = ({ direction = 'all', children, ...props }: FlexCenterProp) => {
+const FlexCenter = ({centering = 'both', children, ...props}: FlexCenterProp) => {
   const id = useId ? useId() : useFallbackId();
 
   const getFlexStyle = () => {
-    if (direction === 'all') {
+    if (centering === 'both') {
       return 'FLEX_ALL_CENTER';
-    } else if (direction === 'row') {
+    } else if (centering === 'horizontal') {
       return 'FLEX_WIDTH_CENTER';
-    } else {
+    } else if (centering === 'vertical') {
       return 'FLEX_HEIGHT_CENTER';
+    } else {
+      return '';
     }
   };
 
