@@ -1,0 +1,71 @@
+{
+  "name": "react-flex-center",
+  "version": "1.0.0",
+  "description": "A React component library for easily centering elements using flexbox.",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src/**/*.css",
+    "src/**/*.scss",
+    ".babelrc.json",
+    ".gitignore",
+    "package.json",
+    "README.md",
+    "tsconfig.json",
+    "yarn.lock"
+  ],
+  "styles": "css/index.scss",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zqsun0/react-flex-center.git"
+  },
+  "keywords": [
+    "react",
+    "flexbox",
+    "center",
+    "flex"
+  ],
+  "author": "zqsun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zqsun0/react-flex-center/issues"
+  },
+  "homepage": "https://github.com/zqsun0/react-flex-center#readme",
+  "peerDependencies": {
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "@types/react-router-dom": "^5.3.3",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^5.3.4",
+    "sass": "^1.60.0"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/node": "^16.18.22",
+    "@types/react": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.8",
+    "prop-types": "^15.8.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "sass": "^1.60.0",
+    "typescript": "^5.0.4"
+  }
+
+}

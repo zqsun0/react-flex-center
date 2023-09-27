@@ -1,0 +1,15 @@
+.FLEX_ALL_CENTER {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FLEX_WIDTH_CENTER {
+  display: flex;
+  justify-content: center;
+}
+
+.FLEX_HEIGHT_CENTER {
+  display: flex;
+  align-items: center;
+}
