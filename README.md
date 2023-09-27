@@ -52,8 +52,8 @@ import FlexCenter from 'react-flex-center';
 
 function ExampleComponent() {
   return (
-    <FlexCenter centering="both" id="example" className="custom-class" style={{ backgroundColor: 'lightgrey' }}>
-      <img src="your-image-source" alt="Your Image" />
+    <FlexCenter centering='both' id='example' className='custom-class' style={{ backgroundColor: 'lightgrey' }}>
+      <img src='your-image-source' alt='Your Image' />
       <div>Your Centered Content</div>
     </FlexCenter>
   );
