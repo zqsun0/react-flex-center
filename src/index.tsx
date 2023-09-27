@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 // 尝试从 'react' 中导入 useId，如果不存在则为 undefined
 const { useId } = require('react');
 
-interface FlexToCenterProp extends HTMLAttributes<HTMLDivElement> {
+interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
   direction?: 'row' | 'column' | 'all';
   children: ReactNode;
 }
@@ -34,7 +34,7 @@ function useFallbackId() {
   return idRef.current;
 }
 
-const FlexToCenter = ({ direction = 'all', children, ...props }: FlexToCenterProp) => {
+const FlexCenter = ({ direction = 'all', children, ...props }: FlexCenterProp) => {
   const id = useId ? useId() : useFallbackId();
 
   const getFlexStyle = () => {
@@ -54,4 +54,4 @@ const FlexToCenter = ({ direction = 'all', children, ...props }: FlexToCenterPro
   );
 };
 
-export default FlexToCenter;
+export default FlexCenter;
