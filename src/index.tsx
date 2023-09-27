@@ -48,7 +48,7 @@ const FlexCenter = ({ direction = 'all', children, ...props }: FlexCenterProp) =
   };
 
   return (
-    <div id={'FlexToCenter-' + id} {...props} className={clsx(getFlexStyle(), props.className)}>
+    <div id={'FlexCenter-' + id} {...props} className={clsx(getFlexStyle(), props.className)}>
       {children}
     </div>
   );

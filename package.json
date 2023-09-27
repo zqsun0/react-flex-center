@@ -1,6 +1,6 @@
 {
   "name": "react-flex-center",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React component library for easily centering elements using flexbox.",
   "main": "dist/index.js",
   "files": [
@@ -38,8 +38,7 @@
   "peerDependencies": {
     "@types/react": "^17.0.0 || ^18.0.0",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "sass": "^1.60.0"
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "clsx": "^1.2.1"

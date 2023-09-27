@@ -62,6 +62,6 @@ var FlexCenter = function (_a) {
             return 'FLEX_HEIGHT_CENTER';
         }
     };
-    return ((0, jsx_runtime_1.jsx)("div", __assign({ id: 'FlexToCenter-' + id }, props, { className: (0, clsx_1.clsx)(getFlexStyle(), props.className) }, { children: children })));
+    return ((0, jsx_runtime_1.jsx)("div", __assign({ id: 'FlexCenter-' + id }, props, { className: (0, clsx_1.clsx)(getFlexStyle(), props.className) }, { children: children })));
 };
 exports.default = FlexCenter;
