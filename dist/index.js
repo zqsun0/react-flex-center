@@ -31,7 +31,7 @@ var useId = require('react').useId;
 /**
  * @description A flex layout component for centering content
  * @author zqsun
- * @version 4.0
+ * @version 5.0
  * @param {object} props - Component properties
  * @param {('horizontal' | 'vertical' | 'both')} [props.centering='both'] - Centering direction. The options are 'horizontal', 'vertical', or 'both'. The default is 'both'.
  *   - 'horizontal': Centers content horizontally
@@ -49,23 +49,22 @@ function useFallbackId() {
     }, []);
     return idRef.current;
 }
-var FlexCenter = function (_a) {
+var FlexCenter = (0, react_1.forwardRef)(function (_a, ref) {
     var _b = _a.centering, centering = _b === void 0 ? 'both' : _b, children = _a.children, props = __rest(_a, ["centering", "children"]);
     var id = useId ? useId() : useFallbackId();
     var getFlexStyle = function () {
-        if (centering === 'both') {
-            return 'FLEX_ALL_CENTER';
-        }
-        else if (centering === 'horizontal') {
-            return 'FLEX_WIDTH_CENTER';
-        }
-        else if (centering === 'vertical') {
-            return 'FLEX_HEIGHT_CENTER';
-        }
-        else {
-            return '';
+        switch (centering) {
+            case 'both':
+                return 'FLEX_ALL_CENTER';
+            case 'horizontal':
+                return 'FLEX_WIDTH_CENTER';
+            case 'vertical':
+                return 'FLEX_HEIGHT_CENTER';
+            default:
+                return '';
         }
     };
-    return ((0, jsx_runtime_1.jsx)("div", __assign({ id: 'FlexCenter-' + id }, props, { className: (0, clsx_1.clsx)(getFlexStyle(), props.className) }, { children: children })));
-};
+    return ((0, jsx_runtime_1.jsx)("div", __assign({ id: 'FlexCenter-' + id, ref: ref }, props, { className: (0, clsx_1.clsx)(getFlexStyle(), props.className) }, { children: children })));
+});
+FlexCenter.displayName = 'FlexCenter';
 exports.default = FlexCenter;

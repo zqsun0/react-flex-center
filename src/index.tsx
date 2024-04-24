@@ -1,9 +1,9 @@
-import { HTMLAttributes, ReactNode, useEffect, useRef } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode, useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 
 // because the useId hook doesn't exist in react@17
 // try to get the useId from 'react', if it doesn't exist, it will be undefined
-const {useId} = require('react');
+const { useId } = require('react');
 
 interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
   centering?: 'horizontal' | 'vertical' | 'both';
@@ -13,7 +13,7 @@ interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
 /**
  * @description A flex layout component for centering content
  * @author zqsun
- * @version 4.0
+ * @version 5.0
  * @param {object} props - Component properties
  * @param {('horizontal' | 'vertical' | 'both')} [props.centering='both'] - Centering direction. The options are 'horizontal', 'vertical', or 'both'. The default is 'both'.
  *   - 'horizontal': Centers content horizontally
@@ -22,7 +22,6 @@ interface FlexCenterProp extends HTMLAttributes<HTMLDivElement> {
  * @param {React.ReactNode} props.children - Child elements
  * @returns {JSX.Element} - FlexCenter component
  */
-
 
 function useFallbackId() {
   const idRef = useRef<string>('');
@@ -36,26 +35,28 @@ function useFallbackId() {
   return idRef.current;
 }
 
-const FlexCenter = ({centering = 'both', children, ...props}: FlexCenterProp) => {
+const FlexCenter = forwardRef<HTMLDivElement, FlexCenterProp>(({ centering = 'both', children, ...props }, ref) => {
   const id = useId ? useId() : useFallbackId();
 
   const getFlexStyle = () => {
-    if (centering === 'both') {
-      return 'FLEX_ALL_CENTER';
-    } else if (centering === 'horizontal') {
-      return 'FLEX_WIDTH_CENTER';
-    } else if (centering === 'vertical') {
-      return 'FLEX_HEIGHT_CENTER';
-    } else {
-      return '';
+    switch (centering) {
+      case 'both':
+        return 'FLEX_ALL_CENTER';
+      case 'horizontal':
+        return 'FLEX_WIDTH_CENTER';
+      case 'vertical':
+        return 'FLEX_HEIGHT_CENTER';
+      default:
+        return '';
     }
   };
 
   return (
-    <div id={'FlexCenter-' + id} {...props} className={clsx(getFlexStyle(), props.className)}>
+    <div id={'FlexCenter-' + id} ref={ref} {...props} className={clsx(getFlexStyle(), props.className)}>
       {children}
     </div>
   );
-};
+});
+FlexCenter.displayName = 'FlexCenter';
 
 export default FlexCenter;
